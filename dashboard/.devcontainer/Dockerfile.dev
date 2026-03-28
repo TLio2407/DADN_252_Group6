@@ -1,0 +1,20 @@
+# Dùng phiên bản Node 20 LTS siêu nhẹ và ổn định nhất
+FROM node:20-alpine
+
+# Đặt thư mục làm việc bên trong container
+WORKDIR /app
+
+# Copy 2 file quản lý thư viện vào trước để tận dụng cache của Docker
+COPY package.json package-lock.json* ./
+
+# Cài đặt thư viện hoàn toàn BÊN TRONG container
+RUN npm install
+
+# Copy toàn bộ code còn lại vào container
+COPY . .
+
+# Mở port mặc định của Vite
+EXPOSE 5173
+
+# Chạy project. Phải có cờ --host để Vite cho phép truy cập từ trình duyệt bên ngoài
+CMD ["npm", "run", "dev", "--", "--host"]

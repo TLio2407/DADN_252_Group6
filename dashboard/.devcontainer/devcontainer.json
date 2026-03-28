@@ -1,0 +1,15 @@
+{
+  "name": "My Vite App Dev Environment",
+  "dockerComposeFile": "docker-compose.yml", // Đã sửa dòng này
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
